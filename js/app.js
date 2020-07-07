@@ -1,16 +1,14 @@
-var plainAlphabet = "abcdefghijklmnopqrstuvwxyz:()!¡,'";
-var encryptedAlphabet = "qw,ert(yuio'pa:sdfg!hjklz¡xcv)bnm";
+const plainAlphabet = "abcdefghijklmnopqrstuvwxyz:()!¡,'";
+const encryptedAlphabet = "qw,ert(yuio'pa:sdfg!hjklz¡xcv)bnm";
 
 
+///////////////////////////////////////Traducir Plain a Encrypted///////////////////////////////////
 //Recoger valor textarea texto plano
 function getMsgP(){
-//document.getElementById("encryptedarea").value = "";
 var msg = document.getElementById("plainarea").value;
 return msg;
 }
 
-
-//Traducir Plain a Encrypted
 var indexP;
 var arrayIndexP = [];
 var indexE;
@@ -43,10 +41,7 @@ function getEncryptedResult(array){
 
 var resultE = document.getElementById("btnEncrypt").addEventListener("click", event = () => getEncryptedResult(getPlainIndex(getMsgP())));
 
-
-
-
-//Traducir Encrypted a Plain
+////////////////////////////////Traducir Encrypted a Plain////////////////////////////////////////////
 var indexE1;
 var arrayIndexE = [];
 var indexP1;
@@ -80,25 +75,32 @@ function getPlainResult(array){
         }
         resultado += indexP1;
     }
-    document.getElementById("plainarea").innerText = resultado; 
-    
+    document.getElementById("plainarea").innerText = resultado;  
 }
 
 var resultP = document.getElementById("btnDecrypt").addEventListener("click", event = () => getPlainResult(getEncryptedIndex(getMsgE())));
 
 
+////////////////////////////////GENERADOR ALEATORIO//////////////////////////////
 
 
+var n=4;
+var max = 100;
+var min = 1;
+var myArray = [];
 
-
-
-
-
-
-
-
-
-
+function getRandomNumber(n, min, max){
+    var range = max - min + 1
+    for(var i=0; i<n; i++){
+        var random = Math.ceil(Math.random() * range);
+        //POSICION 1
+        myArray.push(random);
+    }
+     //POSICION 2
+     console.log(myArray);
+}
+   
+getRandomNumber(4, 1, 100);
 
 
 
