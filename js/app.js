@@ -41,18 +41,34 @@ var indexE1;
 var arrayIndexE = [];
 var indexP1;
 
-function getEncryptedIndex(msgE){
-    for(var i =0; i< msgE.length;i++){
+function getEncryptedIndex(msg){
+    for(var i =0; i< msg.length;i++){
         for(var j=0; j<encryptedAlphabet.length; j++){
-            if(msgE[i] === encryptedAlphabet[j]){
+            if(msg[i] === encryptedAlphabet[j]){
                 indexE1 = j;
             }
+            
         }
-        arrayIndexP.push(indexE1);
+        arrayIndexE.push(indexE1);
     }
 }
 
 getEncryptedIndex(msgE);
+
+function getPlainResult(array){
+    var resultado = "";
+    for(var i=0; i< array.length; i++){
+        for(var j=0; j< plainAlphabet.length; j++){
+            if(array[i] === j){
+                indexP1 = plainAlphabet[j];
+            }
+        }
+        resultado += indexP1;
+    }
+    console.log(resultado); 
+}
+
+getPlainResult(arrayIndexE);
 
 
 

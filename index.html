@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/site.css">
     <title>Enigma & Generador Aleatorio</title>
 </head>
 <body>
+    <header>
+        <h2>Enigma</h2>
+    </header>
+    <div class="area">
+        <textarea name="plaintext" id="plainarea" cols="30" rows="10"></textarea>
+    </div>
+    <div class="buttons">
+        <button id="btnEncrypt" type="button">Encrypt</button>
+        <button id="btnDecrypt">Decrypt</button>
+    </div>
+    <div class="area">
+        <textarea name="encryptedtext" id="encryptedarea" cols="30" rows="10"></textarea>
+    </div>
     <script src="js/app.js"></script>
 </body>
 </html>
