@@ -13,18 +13,19 @@ var indexP;
 var arrayIndexP = [];
 var indexE;
 
-function getPlainIndex(msg){
-        for(var i =0; i< msg.length;i++){
-            for(var j=0; j<plainAlphabet.length; j++){
-                if(msg[i] === plainAlphabet[j]){
-                    indexP = j;
-                }
-            }
-            arrayIndexP.push(indexP);
-        }
-        return arrayIndexP;
-    }  
 
+
+function getPlainIndex(msg){
+    for(var i =0; i< msg.length;i++){
+        for(var j=0; j<plainAlphabet.length; j++){
+            if(msg[i] === plainAlphabet[j]){
+                indexP = j;
+            }
+        }
+        arrayIndexP.push(indexP);
+    }
+    return arrayIndexP;
+}  
 
 function getEncryptedResult(array){
     var resultado = "";
@@ -83,8 +84,6 @@ var resultP = document.getElementById("btnDecrypt").addEventListener("click", ev
 
 ////////////////////////////////GENERADOR ALEATORIO//////////////////////////////
 
-
-
 var myArray = [];
 
 function getRandomNumber(n, min, max){
@@ -99,18 +98,10 @@ function getRandomNumber(n, min, max){
         console.log(myArray);
     }else{
         console.log("Por favor refresque navegador para volver a generar un Array con sus condiciones");
-    }
-    
-        
-     
+    }   
 }
 
  
 getRandomNumber(10, 1, 100);
-
-
-
-
-
 
 
