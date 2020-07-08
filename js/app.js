@@ -84,23 +84,29 @@ var resultP = document.getElementById("btnDecrypt").addEventListener("click", ev
 ////////////////////////////////GENERADOR ALEATORIO//////////////////////////////
 
 
-var n=4;
-var max = 100;
-var min = 1;
+
 var myArray = [];
 
 function getRandomNumber(n, min, max){
     var range = max - min + 1
     for(var i=0; i<n; i++){
-        var random = Math.ceil(Math.random() * range);
-        //POSICION 1
-        myArray.push(random);
+            var random = Math.ceil(Math.random() * range);
+            if(myArray.indexOf(random) < 0){
+                myArray.push(random);
+            } 
     }
-     //POSICION 2
-     console.log(myArray);
+    if(myArray.length === n){
+        console.log(myArray);
+    }else{
+        console.log("Por favor refresque navegador para volver a generar un Array con sus condiciones");
+    }
+    
+        
+     
 }
-   
-getRandomNumber(4, 1, 100);
+
+ 
+getRandomNumber(10, 1, 100);
 
 
 
