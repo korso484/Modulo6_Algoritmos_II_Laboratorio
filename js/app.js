@@ -1,24 +1,11 @@
 const plainAlphabet = "abcdefghijklmnopqrstuvwxyz:()!¡,'";
 const encryptedAlphabet = "qw,ert(yuio'pa:sdfg!hjklz¡xcv)bnm";
 
-
-///////////////////////////////////////Traducir Plain a Encrypted///////////////////////////////////
-//Recoger valor textarea texto plano
-function getMsgP(){
-var msg = document.getElementById("plainarea").value;
-return msg;
-}
-
-var indexP;
-var arrayIndexP = [];
-var indexE;
-
-
-
-function getPlainIndex(msg){
+//Función genérica que rellena Array con índices a traducir
+function getAlphabetIndex(msg,alphabet){
     for(var i =0; i< msg.length;i++){
-        for(var j=0; j<plainAlphabet.length; j++){
-            if(msg[i] === plainAlphabet[j]){
+        for(var j=0; j<alphabet.length; j++){
+            if(msg[i] === alphabet[j]){
                 indexP = j;
             }
         }
@@ -27,20 +14,34 @@ function getPlainIndex(msg){
     return arrayIndexP;
 }  
 
-function getEncryptedResult(array){
+//Función genérica traductora
+function getAlphabetResult(array, alphabet, id){
     var resultado = "";
     for(var i=0; i< array.length; i++){
-        for(var j=0; j< encryptedAlphabet.length; j++){
+        for(var j=0; j< alphabet.length; j++){
             if(array[i] === j){
-                indexE = encryptedAlphabet[j];
+                indexE = alphabet[j];
             }
         }
         resultado += indexE;
     }
-    document.getElementById("encryptedarea").innerText = resultado; 
+    document.getElementById(id).innerText = resultado; 
 }
 
-var resultE = document.getElementById("btnEncrypt").addEventListener("click", event = () => getEncryptedResult(getPlainIndex(getMsgP())));
+///////////////////////////////////////Traducir Plain a Encrypted///////////////////////////////////
+
+var indexP;
+var arrayIndexP = [];
+var indexE;
+
+//Recoger valor textarea texto plano
+function getMsgP(){
+    var msg = document.getElementById("plainarea").value;
+    return msg;
+}
+
+
+var resultE = document.getElementById("btnEncrypt").addEventListener("click", event = () => getAlphabetResult((getAlphabetIndex(getMsgP(), plainAlphabet)), encryptedAlphabet, "encryptedarea"));
 
 ////////////////////////////////Traducir Encrypted a Plain////////////////////////////////////////////
 var indexE1;
@@ -53,33 +54,7 @@ function getMsgE(){
     return msg;
     }
 
-function getEncryptedIndex(msg){
-    for(var i =0; i< msg.length;i++){
-        for(var j=0; j<encryptedAlphabet.length; j++){
-            if(msg[i] === encryptedAlphabet[j]){
-                indexE1 = j;
-            }
-        }
-        arrayIndexE.push(indexE1);
-    }
-    return arrayIndexE;
-}
-
-
-function getPlainResult(array){
-    var resultado = "";
-    for(var i=0; i< array.length; i++){
-        for(var j=0; j< plainAlphabet.length; j++){
-            if(array[i] === j){
-                indexP1 = plainAlphabet[j];
-            }
-        }
-        resultado += indexP1;
-    }
-    document.getElementById("plainarea").innerText = resultado;  
-}
-
-var resultP = document.getElementById("btnDecrypt").addEventListener("click", event = () => getPlainResult(getEncryptedIndex(getMsgE())));
+var resultP = document.getElementById("btnDecrypt").addEventListener("click", event = () => getAlphabetResult((getAlphabetIndex(getMsgE(), encryptedAlphabet)),plainAlphabet, "plainarea"));
 
 
 ////////////////////////////////GENERADOR ALEATORIO//////////////////////////////
